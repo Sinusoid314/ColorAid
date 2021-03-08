@@ -1,0 +1,71 @@
+LAST MODIFIED: Thursday, February 4, 2016
+
+FIRST DRAFT COMPLETED: Wednesday, May 27, 2015
+
+
+
+Model Data:
+	(X) ColorPoint - Data structure that hold the RGB info of a color.
+	    	cpName -> Name of the color.
+		cpRed -> Red component of the color.
+		cpGreen -> Green component of the color.
+		cpBblue -> Blue component of the color.
+	(X) preDefColorList -> List of pre-defined ColorPoint objects.
+
+Model Functions:
+	
+
+Interface Objects:
+	(X) cameraBtn -> Toggle button that displays cameraView.
+	(X) snapshotBtn -> Toggle button that displays snapshotView.
+	(X) cameraView -> Displays the video stream from the camera.
+	(X) snapshotView -> Displays the picture captured from the camera.
+			    Defaults to hidden.
+	(X) snapshotContext -> Context object for drawing on snapshotView.
+	(X) matchView -> Displays the name of the closest matching color.
+			 Defaults to hidden.
+
+Interface Events:
+	( ) [script main]
+		-Define interface object variables.
+		-Define model data variables.
+	    	-Check for camera support.
+	    	-If no camera support:
+	    		-Display error
+	    	-Else:
+	    		-Set interface object events.
+	(X) cameraBtn_OnClick()
+		-Show cameraView.
+		-Hide snapshotView.
+		-Highlight cameraBtn.
+		-De-highlight snapshotBtn.
+	(X) snapshotBtn_OnClick()
+		-Show snapshotView.
+		-Hide cameraView.
+		-Highlight snapshotBtn.
+		-De-highlight cameraBtn.
+	( ) cameraView_OnClick()
+		-Copy image from cameraView to snapshotView.
+		-Call snapshotBtn_OnClick() to switch to snapshotView.
+	(X) snapshotView_OnClick()
+		snapshotViewRect ->
+		sampleX -> 
+		sampleY -> 
+		sampleColor -> 
+		testDistance -> 
+		closestDistance -> 
+		closestColorIndex -> 
+		-Set sampleX/Y to the event click-point, relative to snapshotView.
+		-Set sampleColor to the color at the sampleX/Y.
+		-Loop through preDefColorList:
+			-Set testDistance to the distance between sampleColor and the
+			 current preDefColorList item.
+			-If this is the first preDefColorList item
+			 OR testDistance is less than closestDistance:
+				-Set closestDistance to testDistance.
+				-Set closestColorIndex to the current
+				 preDefColorList item index.
+		-Display the name of the closest matching color in matchView.
+		-Move matchView to the event click-point, relative to the document.
+		-Show matchView.
+
