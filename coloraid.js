@@ -1,11 +1,3 @@
-//Define interface variables
-var cameraBtn = document.getElementById("cameraBtn");
-var snapshotBtn = document.getElementById("snapshotBtn");
-var cameraView = document.getElementById("cameraView");
-var snapshotView = document.getElementById("snapshotView");
-var snapshotContext = snapshotView.getContext("2d");
-var matchView = document.getElementById("matchView");
-
 function ColorPoint(cpName, cpRed, cpGreen, cpBlue)
 {
     this.cpName = cpName;
@@ -49,11 +41,17 @@ var preDefColorList = [
                        //new ColorPoint("", 0, 0, 0)
                       ];
 
-//If no camera support:
-    //Display error
-    //alert("Error: Camera access not supported.");
-//Else:
-    //Set event handlers
+//Define interface variables
+var cameraBtn = document.getElementById("cameraBtn");
+var snapshotBtn = document.getElementById("snapshotBtn");
+var cameraView = document.getElementById("cameraView");
+var snapshotView = document.getElementById("snapshotView");
+var snapshotContext = snapshotView.getContext("2d");
+var matchView = document.getElementById("matchView");
+
+if(initCamera)
+{
+	//Set events
     cameraBtn.addEventListener("click", cameraBtn_OnClick);
     cameraBtn.addEventListener("tap", cameraBtn_OnClick);
     snapshotBtn.addEventListener("click", snapshotBtn_OnClick);
@@ -62,7 +60,32 @@ var preDefColorList = [
     cameraView.addEventListener("tap", cameraView_OnClick);
     snapshotView.addEventListener("click", snapshotView_OnClick);
     snapshotView.addEventListener("tap", snapshotView_OnClick);
+}
 
+function initCamera()
+{
+    if('mediaDevices' in navigator)
+    {
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then((mediaStream) =>
+              {
+                  cameraView.srcObject = mediaStream;
+                  cameraView.play();
+                  retVal = true;
+              })
+		.catch((err) =>
+               {
+                   alert("Unable to access camera: " + err);
+                   retVal = false;
+               });
+    }
+    else
+    {
+        alert("Your browser does not support media devices.");
+        retVal = false;
+    }
+    return retVal;
+}
 
 function cameraBtn_OnClick(eventObj)
 {
@@ -103,16 +126,7 @@ function snapshotBtn_OnClick(eventObj)
 function cameraView_OnClick(eventObj)
 {
     //Copy image from cameraView to snapshotView
-    //snapshotContext.drawImage(cameraView, 0, 0);
-
-    snapshotContext.fillStyle = "red";
-    snapshotContext.fillRect(50, 50, 100, 100);
-    snapshotContext.fillStyle = "teal";
-    snapshotContext.fillRect(50, 150, 100, 100);
-    snapshotContext.fillStyle = "green";
-    snapshotContext.fillRect(150, 50, 100, 100);
-    snapshotContext.fillStyle = "blue";
-    snapshotContext.fillRect(150, 150, 100, 100);
+    snapshotContext.drawImage(cameraView, 0, 0);
 
     //Switch to snapshotTab
     snapshotBtn_OnClick();
