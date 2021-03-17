@@ -49,18 +49,8 @@ var snapshotView = document.getElementById("snapshotView");
 var snapshotContext = snapshotView.getContext("2d");
 var matchView = document.getElementById("matchView");
 
-if(initCamera)
-{
-	//Set events
-    cameraBtn.addEventListener("click", cameraBtn_OnClick);
-    cameraBtn.addEventListener("tap", cameraBtn_OnClick);
-    snapshotBtn.addEventListener("click", snapshotBtn_OnClick);
-    snapshotBtn.addEventListener("tap", snapshotBtn_OnClick);
-    cameraView.addEventListener("click", cameraView_OnClick);
-    cameraView.addEventListener("tap", cameraView_OnClick);
-    snapshotView.addEventListener("click", snapshotView_OnClick);
-    snapshotView.addEventListener("tap", snapshotView_OnClick);
-}
+initCamera();
+setEvents();
 
 function initCamera()
 {
@@ -71,20 +61,29 @@ function initCamera()
               {
                   cameraView.srcObject = mediaStream;
                   cameraView.play();
-                  retVal = true;
+                  return mediaStream;
               })
 		.catch((err) =>
                {
                    alert("Unable to access camera: " + err);
-                   retVal = false;
                });
     }
     else
     {
         alert("Your browser does not support media devices.");
-        retVal = false;
     }
-    return retVal;
+}
+
+function setEvents()
+{
+    cameraBtn.addEventListener("click", cameraBtn_OnClick);
+    cameraBtn.addEventListener("tap", cameraBtn_OnClick);
+    snapshotBtn.addEventListener("click", snapshotBtn_OnClick);
+    snapshotBtn.addEventListener("tap", snapshotBtn_OnClick);
+    cameraView.addEventListener("click", cameraView_OnClick);
+    cameraView.addEventListener("tap", cameraView_OnClick);
+    snapshotView.addEventListener("click", snapshotView_OnClick);
+    snapshotView.addEventListener("tap", snapshotView_OnClick);
 }
 
 function cameraBtn_OnClick(eventObj)
@@ -109,7 +108,6 @@ function snapshotBtn_OnClick(eventObj)
 {
     //Show snapshotView
     snapshotView.style.display = "block";
-    //matchView.style.display = "block";
 
     //Hide cameraView
 	cameraView.style.display = "none";

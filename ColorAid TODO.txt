@@ -1,3 +1,5 @@
-- Add CSS classes for toggling colors of cameraBtn and snapshotBtn.
+- Complete color list.
+
+- Fix snapshot so it is the same size as camera view.
 
 - 

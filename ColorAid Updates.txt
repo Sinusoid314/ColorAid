@@ -1,2 +1,6 @@
+(March 17, 2021)
+	- Moved event-setter code into setEvents().
+	- Gave buttons proper text and cursor display.
+
 (March 12, 2021)
-	-Added initCamera() to setup camera support.
+	- Added initCamera() to setup camera support.
