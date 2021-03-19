@@ -87,50 +87,33 @@ function setEvents()
 }
 
 function cameraBtn_OnClick(eventObj)
+//Switch to camera view
 {
-    //Show cameraView
     cameraView.style.display = "block";
-
-    //Hide snapshotView
 	snapshotView.style.display = "none";
     matchView.style.display = "none";
-
-	//Highlight cameraBtn
-	cameraBtn.style.backgroundColor = "black";
-	cameraBtn.style.color = "white";
-
-	//De-highlight snapshotBtn
-	snapshotBtn.style.backgroundColor = "white";
-    snapshotBtn.style.color = "black";
+	cameraBtn.className = "highlight";
+	snapshotBtn.className = "unhighlight";
 }
 
 function snapshotBtn_OnClick(eventObj)
+//Switch to snapshot view
 {
-    //Show snapshotView
     snapshotView.style.display = "block";
-
-    //Hide cameraView
 	cameraView.style.display = "none";
-
-	//Highlight snapshotBtn
-	snapshotBtn.style.backgroundColor = "black";
-	snapshotBtn.style.color = "white";
-
-	//De-highlight cameraBtn
-	cameraBtn.style.backgroundColor = "white";
-    cameraBtn.style.color = "black";
+	snapshotBtn.className = "highlight";
+	cameraBtn.className = "unhighlight";
 }
 
 function cameraView_OnClick(eventObj)
+//Capture snapshot from camera
 {
-    //Copy image from cameraView to snapshotView
-    snapshotContext.drawImage(cameraView, 0, 0);
-
-    //Switch to snapshotTab
+    snapshotContext.drawImage(cameraView, 0, 0, snapshotView.width, snapshotView.height);
     snapshotBtn_OnClick();
 }
 
 function snapshotView_OnClick(eventObj)
+//Find the closest matching color to the selected snapshot pixel
 {
     var snapshotViewRect;
     var sampleX = 0;

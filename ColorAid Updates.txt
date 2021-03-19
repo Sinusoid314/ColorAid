@@ -1,3 +1,6 @@
+(March 18, 2021)
+	- Added CSS classes for highlighting/un-highlighting the toggle buttons.
+
 (March 17, 2021)
 	- Moved event-setter code into setEvents().
 	- Gave buttons proper text and cursor display.
