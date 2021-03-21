@@ -1,5 +1,3 @@
-- Switch to HSL color space.
-
 - Fix snapshot so it is the same size as camera view.
 
 - 

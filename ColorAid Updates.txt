@@ -1,3 +1,8 @@
+(March 20, 2021)
+	- Moved color list into its own module.
+	- Added more colors to the color list.
+	- Added instruction text.
+
 (March 18, 2021)
 	- Added CSS classes for highlighting/un-highlighting the toggle buttons.
 

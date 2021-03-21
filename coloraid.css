@@ -15,9 +15,23 @@ body
     color: black;
 }
 
+#cameraText
+{
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#snapshotText
+{
+    display: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 #cameraBtn
 {
-    display: inline;
+    display: inline-block;
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 6px;
@@ -29,7 +43,7 @@ body
 
 #snapshotBtn
 {
-    display: inline;
+    display: inline-block;
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 6px;

@@ -1,46 +1,3 @@
-function ColorPoint(cpName, cpRed, cpGreen, cpBlue)
-{
-    this.cpName = cpName;
-    this.cpRed = cpRed;
-    this.cpGreen = cpGreen;
-    this.cpBlue = cpBlue;
-}
-
-//List of predefined colors
-var preDefColorList = [
-                       new ColorPoint("Black", 0, 0, 0),
-                       new ColorPoint("White", 255, 255, 255),
-                       new ColorPoint("Red", 255, 0, 0),
-                       //new ColorPoint("Light Red", 0, 0, 0),
-                       new ColorPoint("Dark Red", 139, 0, 0),
-                       new ColorPoint("Green", 0, 128, 0),
-                       new ColorPoint("Light Green", 144, 238, 144),
-                       new ColorPoint("Dark Green", 0, 100, 0),
-                       new ColorPoint("Blue", 0, 0, 255),
-                       new ColorPoint("Light Blue", 173, 216, 230),
-                       new ColorPoint("Dark Blue", 0, 0, 139),
-                       //new ColorPoint("Orange", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       new ColorPoint("Yellow", 255, 255, 0),
-                       new ColorPoint("Light Yellow", 255, 255, 224),
-                       //new ColorPoint("Dark Yellow", 0, 0, 0),
-                       //new ColorPoint("Purple", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       //new ColorPoint("Grey", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       new ColorPoint("Brown", 165, 42, 42),
-                       //new ColorPoint("Light Brown", 0, 0, 0),
-                       //new ColorPoint("Dark Brown", 0, 0, 0),
-                       //new ColorPoint("Pink", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       //new ColorPoint("", 0, 0, 0),
-                       new ColorPoint("Teal", 0, 128, 128),
-                       //new ColorPoint("", 0, 0, 0)
-                      ];
-
 //Define interface variables
 var cameraBtn = document.getElementById("cameraBtn");
 var snapshotBtn = document.getElementById("snapshotBtn");
@@ -92,8 +49,12 @@ function cameraBtn_OnClick(eventObj)
     cameraView.style.display = "block";
 	snapshotView.style.display = "none";
     matchView.style.display = "none";
+
 	cameraBtn.className = "highlight";
 	snapshotBtn.className = "unhighlight";
+
+	cameraText.style.display = "block";
+	snapshotText.style.display = "none";
 }
 
 function snapshotBtn_OnClick(eventObj)
@@ -101,8 +62,12 @@ function snapshotBtn_OnClick(eventObj)
 {
     snapshotView.style.display = "block";
 	cameraView.style.display = "none";
+
 	snapshotBtn.className = "highlight";
 	cameraBtn.className = "unhighlight";
+
+	snapshotText.style.display = "block";
+	cameraText.style.display = "none";
 }
 
 function cameraView_OnClick(eventObj)
@@ -132,13 +97,13 @@ function snapshotView_OnClick(eventObj)
     sampleColor = snapshotContext.getImageData(sampleX, sampleY, 1, 1).data;
 
     //Loop through preDefColorList
-    for(var listIndex=0; listIndex < preDefColorList.length; listIndex++)
+    for(var listIndex=0; listIndex < colorList.length; listIndex++)
     {
         //Set testDistance to the distance between sampleColor and the current preDefColorList item
         //(the square-root in the distance formula is ommitted to simplify calculation)
-        testDistance = Math.pow(preDefColorList[listIndex].cpRed - sampleColor[0], 2)
-			         + Math.pow(preDefColorList[listIndex].cpGreen - sampleColor[1], 2)
-			         + Math.pow(preDefColorList[listIndex].cpBlue - sampleColor[2], 2);
+        testDistance = Math.pow(colorList[listIndex].red - sampleColor[0], 2)
+			         + Math.pow(colorList[listIndex].green - sampleColor[1], 2)
+			         + Math.pow(colorList[listIndex].blue - sampleColor[2], 2);
 
         if((listIndex == 0) || (testDistance < closestDistance))
         {
@@ -148,7 +113,7 @@ function snapshotView_OnClick(eventObj)
     }
 
     //Display the name of the closest matching color in matchView
-    matchView.innerHTML = preDefColorList[closestColorIndex].cpName;
+    matchView.innerHTML = colorList[closestColorIndex].name;
 
 	//Move matchView to the event click-point, relative to the document.
     matchView.style.left = eventObj.pageX;
