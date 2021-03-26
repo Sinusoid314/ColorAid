@@ -1,3 +1,6 @@
+(March 25, 2021)
+	- Updated color scheme to use HSL-space and color regions for matching.
+
 (March 20, 2021)
 	- Moved color list into its own module.
 	- Added more colors to the color list.
