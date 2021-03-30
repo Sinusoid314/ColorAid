@@ -19,7 +19,59 @@ function Color(hue, sat, lum)
     this.setFromRGB = function(red, green, blue)
     //Convert the RGB components to the HSL components of this object
     {
-        //
+        var cMin;
+        var cMax;
+        var delta;
+
+        red /= 255;
+        green /= 255;
+        blue /= 255;
+
+        cMin = Math.min(red, green, blue);
+        cMax = Math.max(red, green, blue);
+        delta = cMax - cMin;
+
+        //Calculate hue
+        if(delta == 0)
+        {
+            this.hue = 0;
+	    }
+	    else if(cMax == red)
+	    {
+            this.hue = ((green - blue) / delta) % 6;
+	    }
+	    else if(cMax == green)
+	    {
+            this.hue = ((blue - red) / delta) + 2;
+	    }
+	    else if(cMax == blue)
+	    {
+            this.hue = ((red - green) / delta) + 4;
+	    }
+
+        //Convert hue to degrees
+        this.hue = Math.round(60 * this.hue);
+	    if(this.hue < 0)
+	    {
+			this.hue += 360;
+	    }
+
+        //Calculate luminance
+        this.lum = (cMax + cMin) / 2;
+
+        //Calculate saturation
+        if(delta == 0)
+        {
+            this.sat = 0;
+		}
+		else
+		{
+            delta / (1 - Math.abs(2 * this.lum - 1));
+		}
+
+		//Convert luminance and saturation to percentages
+		this.sat Math.round(this.sat * 100);
+		this.lum = Math.round(this.lum * 100);
     }
 }
 

@@ -81,45 +81,28 @@ function snapshotView_OnClick(eventObj)
 //Find the closest matching color to the selected snapshot pixel
 {
     var snapshotViewRect;
-    var sampleX = 0;
-    var sampleY = 0;
-    var sampleColor;
-    var testDistance = 0;
-    var closestDistance = 0;
-    var closestColorIndex = 0;
+    var sampleX;
+    var sampleY;
+    var rgbData;
+    var sampleColor = new Color(0, 0, 0);
+    var matchRegion;
 
     //Set sampleX/Y to the event click-point, relative to snapshotView
     snapshotViewRect = snapshotView.getBoundingClientRect();
     sampleX = eventObj.clientX - snapshotViewRect.left;
     sampleY = eventObj.clientY - snapshotViewRect.top;
 
-    //Set sampleColor to the color at the sampleX/Y
-    sampleColor = snapshotContext.getImageData(sampleX, sampleY, 1, 1).data;
+    //Get the HSL color at sampleX/Y
+    rgbData = snapshotContext.getImageData(sampleX, sampleY, 1, 1).data;
+    sampleColor.setFromRGB(rgbData[0], rgbData[1], rgbData[2]);
 
-    //Loop through preDefColorList
-    for(var listIndex=0; listIndex < colorList.length; listIndex++)
-    {
-        //Set testDistance to the distance between sampleColor and the current preDefColorList item
-        //(the square-root in the distance formula is ommitted to simplify calculation)
-        testDistance = Math.pow(colorList[listIndex].red - sampleColor[0], 2)
-			         + Math.pow(colorList[listIndex].green - sampleColor[1], 2)
-			         + Math.pow(colorList[listIndex].blue - sampleColor[2], 2);
+    //Find the color region that sampleColor is in
+    matchRegion = colorRegionList.find(item => item.containsColor(sampleColor);
 
-        if((listIndex == 0) || (testDistance < closestDistance))
-        {
-            closestDistance = testDistance;
-            closestColorIndex = listIndex;
-	    }
-    }
-
-    //Display the name of the closest matching color in matchView
-    matchView.innerHTML = colorList[closestColorIndex].name;
-
-	//Move matchView to the event click-point, relative to the document.
+    //Display the name of the matching color region at the click-point
+    matchView.innerHTML = matchRegion.name;
     matchView.style.left = eventObj.pageX;
     matchView.style.top = eventObj.pageY;
-
-    //Show matchView.
     matchView.style.display = "block";
 }
 

@@ -1,3 +1,7 @@
+(March 29, 2021)
+	- Update snapshotView_OnClick() to utilize the HSL-region scheme.
+	- Implement the setFromRGB() method of Color.
+
 (March 25, 2021)
 	- Updated color scheme to use HSL-space and color regions for matching.
 

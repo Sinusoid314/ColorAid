@@ -1,5 +1,1 @@
 - Fix snapshot so it is the same size as camera view.
-
-- Update event functions to utilize the HSL-region scheme.
-
-- Implement the setFromRGB() method of Color.
