@@ -97,7 +97,7 @@ function snapshotView_OnClick(eventObj)
     sampleColor.setFromRGB(rgbData[0], rgbData[1], rgbData[2]);
 
     //Find the color region that sampleColor is in
-    matchRegion = colorRegionList.find(item => item.containsColor(sampleColor);
+    matchRegion = colorRegionList.find(item => item.containsColor(sampleColor));
 
     //Display the name of the matching color region at the click-point
     matchView.innerHTML = matchRegion.name;

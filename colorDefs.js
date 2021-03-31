@@ -66,13 +66,13 @@ function Color(hue, sat, lum)
 		}
 		else
 		{
-            delta / (1 - Math.abs(2 * this.lum - 1));
+            this.sat = delta / (1 - Math.abs(2 * this.lum - 1));
 		}
 
 		//Convert luminance and saturation to percentages
-		this.sat Math.round(this.sat * 100);
+		this.sat = Math.round(this.sat * 100);
 		this.lum = Math.round(this.lum * 100);
-    }
+    };
 }
 
 function ColorRegion(name, min, max)
@@ -114,38 +114,38 @@ function ColorRegion(name, min, max)
         }
 
         return true;
-    }
+    };
 }
 
 var colorRegionList =
     [
-    new ColorRegion("orange", new Color(orangeHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Orange", new Color(orangeHueMin, graySatMax + 1, blackLumMax + 1),
                               new Color(yellowHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("yellow", new Color(yellowHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Yellow", new Color(yellowHueMin, graySatMax + 1, blackLumMax + 1),
                               new Color(greenHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("green", new Color(greenHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Green", new Color(greenHueMin, graySatMax + 1, blackLumMax + 1),
                              new Color(tealHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("teal", new Color(tealHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Teal", new Color(tealHueMin, graySatMax + 1, blackLumMax + 1),
                             new Color(blueHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("blue", new Color(blueHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Blue", new Color(blueHueMin, graySatMax + 1, blackLumMax + 1),
                             new Color(purpleHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("purple", new Color(purpleHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Purple", new Color(purpleHueMin, graySatMax + 1, blackLumMax + 1),
                               new Color(redHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("red", new Color(redHueMin, graySatMax + 1, blackLumMax + 1),
+    new ColorRegion("Red", new Color(redHueMin, graySatMax + 1, blackLumMax + 1),
                            new Color(orangeHueMin - 1, 100, whiteLumMin - 1)),
 
-    new ColorRegion("gray", new Color(0, 0, blackLumMax + 1),
+    new ColorRegion("Gray", new Color(0, 0, blackLumMax + 1),
                             new Color(360, graySatMax, whiteLumMin - 1)),
 
-    new ColorRegion("black", new Color(0, 0, 0),
+    new ColorRegion("Black", new Color(0, 0, 0),
                              new Color(360, 100, blackLumMax)),
 
-    new ColorRegion("white", new Color(0, 0, whiteLumMin),
+    new ColorRegion("White", new Color(0, 0, whiteLumMin),
                              new Color(360, 100, 100))
     ];

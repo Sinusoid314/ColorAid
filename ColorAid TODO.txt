@@ -1,1 +1,3 @@
 - Fix snapshot so it is the same size as camera view.
+
+- Add more color regions.

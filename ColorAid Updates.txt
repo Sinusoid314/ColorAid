@@ -1,3 +1,6 @@
+(March 30, 2021)
+	- Fixed bug with displaying color name.
+
 (March 29, 2021)
 	- Update snapshotView_OnClick() to utilize the HSL-region scheme.
 	- Implement the setFromRGB() method of Color.
