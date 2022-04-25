@@ -1,9 +1,17 @@
+(April 25, 2022)
+[v1.1.0]
+	- Added index.html that redirects to coloraid.html.
+	- Modified initCamera() in coloraid.js to request the rear-facing camera.
+	- Reformatted source files.
+	- Modified colorDef.js to use the 'class' syntax for Color and ColorRegion classes.
+	- Added a version div to coloraid.html.
+
 (March 30, 2021)
 	- Fixed bug with displaying color name.
 
 (March 29, 2021)
-	- Update snapshotView_OnClick() to utilize the HSL-region scheme.
-	- Implement the setFromRGB() method of Color.
+	- Updated snapshotView_OnClick() to utilize the HSL-region scheme.
+	- Implemented the setFromRGB() method of Color.
 
 (March 25, 2021)
 	- Updated color scheme to use HSL-space and color regions for matching.
