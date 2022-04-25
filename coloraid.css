@@ -1,98 +1,97 @@
 body
 {
-    
 }
 
 .highlight
 {
-    background-color: blue;
-    color: white;
+  background-color: blue;
+  color: white;
 }
 
 .unhighlight
 {
-    background-color: lightgray;
-    color: black;
+  background-color: lightgray;
+  color: black;
 }
 
 #cameraText
 {
-    display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #snapshotText
 {
-    display: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  display: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #cameraBtn
 {
-    display: inline-block;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
-    border-style: solid;
-    border-width: 0px;
-    cursor: pointer;
+  display: inline-block;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-style: solid;
+  border-width: 0px;
+  cursor: pointer;
 }
 
 #snapshotBtn
 {
-    display: inline-block;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
-    border-style: solid;
-    border-width: 0px;
-    cursor: pointer;
+  display: inline-block;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-style: solid;
+  border-width: 0px;
+  cursor: pointer;
 }
 
 #cameraView
 {
-    position: absolute;
-    display: block;
-    margin-top: 6px;
-    border-style: solid;
-    border-width: 1px;
-    background-color: white;
-    /*
-    width: 500px;
-    height: 500px;
-    */
+  position: absolute;
+  display: block;
+  margin-top: 6px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+  /*
+  width: 500px;
+  height: 500px;
+  */
 }
 
 #snapshotView
 {
-    position: absolute;
-    display: none;
-    margin-top: 6px;
-    border-style: solid;
-    border-width: 1px;
-    background-color: grey;
-    /*
-    width: 500px;
-    height: 500px;
-    */
+  position: absolute;
+  display: none;
+  margin-top: 6px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: grey;
+  /*
+  width: 500px;
+  height: 500px;
+  */
 }
 
 #matchView
 {
-    position: absolute;
-    display: none;
-    left: 0px;
-    top: 0px;
-    width: 100px;
-    height: 20px;
-    border-style: solid;
-    border-width: 1px;
-    color: black;
-    background-color: white;
+  position: absolute;
+  display: none;
+  left: 0px;
+  top: 0px;
+  width: 100px;
+  height: 20px;
+  border-style: solid;
+  border-width: 1px;
+  color: black;
+  background-color: white;
 }
 
 #version
