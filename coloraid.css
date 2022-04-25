@@ -54,7 +54,7 @@ body
 
 #cameraView
 {
-  position: absolute;
+  /*position: absolute;*/
   display: block;
   margin-top: 6px;
   border-style: solid;
@@ -68,7 +68,7 @@ body
 
 #snapshotView
 {
-  position: absolute;
+  /*position: absolute;*/
   display: none;
   margin-top: 6px;
   border-style: solid;

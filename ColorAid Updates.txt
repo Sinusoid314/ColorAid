@@ -1,4 +1,6 @@
 (April 25, 2022)
+[v1.1.1]
+	- Fixed version div position.
 [v1.1.0]
 	- Added index.html that redirects to coloraid.html.
 	- Modified initCamera() in coloraid.js to request the rear-facing camera.
