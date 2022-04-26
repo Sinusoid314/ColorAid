@@ -6,6 +6,10 @@ var snapshotView = document.getElementById("snapshotView");
 var snapshotContext = snapshotView.getContext("2d");
 var matchView = document.getElementById("matchView");
 
+//Make sure the snapshot canvas' actual size is the same as the camera view's CSS size
+snapshotView.width = cameraView.offsetWidth;
+snapshotView.height = cameraView.offsetHeight;
+
 initCamera();
 setEvents();
 
@@ -73,7 +77,13 @@ function snapshotBtn_OnClick(eventObj)
 function cameraView_OnClick(eventObj)
 //Capture snapshot from camera
 {
-  snapshotContext.drawImage(cameraView, 0, 0, snapshotView.width, snapshotView.height);
+  var aspectRatio = cameraView.videoWidth / cameraView.videoHeight;
+  var displayWidth = Math.round(snapshotView.height * aspectRatio);
+  var displayHeight = Math.round(snapshotView.height);
+  var displayX = Math.round((snapshotView.width - displayWidth) / 2);
+  var displayY = 0;
+
+  snapshotContext.drawImage(cameraView, displayX, displayY, displayWidth, displayHeight);
   snapshotBtn_OnClick();
 }
 
@@ -89,8 +99,8 @@ function snapshotView_OnClick(eventObj)
 
   //Set sampleX/Y to the event click-point, relative to snapshotView
   snapshotViewRect = snapshotView.getBoundingClientRect();
-  sampleX = eventObj.clientX - snapshotViewRect.left;
-  sampleY = eventObj.clientY - snapshotViewRect.top;
+  sampleX = Math.round(eventObj.clientX - snapshotViewRect.left);
+  sampleY = Math.round(eventObj.clientY - snapshotViewRect.top);
 
   //Get the HSL color at sampleX/Y
   rgbData = snapshotContext.getImageData(sampleX, sampleY, 1, 1).data;

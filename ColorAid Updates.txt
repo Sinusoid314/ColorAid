@@ -1,3 +1,8 @@
+(April 26, 2022)
+[v1.1.3]
+	- Fixed the snapshot image so it is the same size as camera view.
+	- Fixed a bug with the color data not matching the click/tap position.
+
 (April 25, 2022)
 [v1.1.2]
 	- Modified the page layout to center and stretch the views.

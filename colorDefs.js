@@ -7,7 +7,7 @@ const blueHueMin = 190;
 const purpleHueMin = 280;
 const redHueMin = 350;
 const graySatMax = 10;
-const blackLumMax = 10;
+const blackLumMax = 5;
 const whiteLumMin = 90;
 
 class Color
