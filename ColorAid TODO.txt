@@ -1,3 +1,2 @@
 - Fix snapshot so it is the same size as camera view.
-- Modify the snapshot and camera views to fill the page view.
 - Add more color regions.
