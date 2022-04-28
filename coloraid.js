@@ -5,15 +5,15 @@ import {colorNames} from "./colorNames.js";
 //Define the color references
 class ColorRef
 {
-  constructor(name)
+  constructor(refName, displayName)
   {
-    this.name = name;
-    this.color = new Color(name);
+    this.name = displayName;
+    this.color = new Color(refName);
   }
 }
 
 var colorRefs = [];
-colorNames.forEach(name => colorRefs.push(new ColorRef(name)));
+colorNames.forEach(name => colorRefs.push(new ColorRef(name[0], name[1])));
 
 //Define interface variables
 var cameraBtn = document.getElementById("cameraBtn");
@@ -22,6 +22,7 @@ var cameraView = document.getElementById("cameraView");
 var snapshotView = document.getElementById("snapshotView");
 var snapshotContext = snapshotView.getContext("2d");
 var matchView = document.getElementById("matchView");
+var version = document.getElementById("version");
 
 //Make sure the snapshot canvas' actual size is the same as the camera view's CSS size
 snapshotView.width = cameraView.offsetWidth;
@@ -123,7 +124,7 @@ function snapshotView_OnClick(eventObj)
 
   //Get the pixel color at sampleX/Y
   rgbData = snapshotContext.getImageData(sampleX, sampleY, 1, 1).data;
-  sampleColor = new Color("srgb", [rgbData[0], rgbData[1], rgbData[2]]);
+  sampleColor = new Color("srgb", [(rgbData[0] / 255), (rgbData[1] / 255), (rgbData[2] / 255)]);
 
   //Find the color reference that sampleColor is nearest to
   leastDistance = sampleColor.distance(colorRefs[0].color, "lab");

@@ -1,1 +1,1 @@
-- Dynamically resize the color name display.
+- 
