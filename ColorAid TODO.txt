@@ -1,1 +1,1 @@
-- Switch to a L*a*b* color space.
+- Dynamically resize the color name display.
