@@ -1,3 +1,7 @@
+(May 3, 2022)
+[v1.1.6]
+	- Doubled the font size of the matching-color-name label.
+
 (April 28, 2022)
 [v1.1.5]
 	- Fixed bug with matching sRGB's 0-1 range with regular RGB's 0-255 range.

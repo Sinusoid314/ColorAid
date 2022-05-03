@@ -1,5 +1,5 @@
 //Import the ColorJS library
-import Color from "https://colorjs.io/dist/color.esm.min.js";
+import Color from "https://colorjs.io/dist/color.js";
 import {colorNames} from "./colorNames.js";
 
 //Define the color references
