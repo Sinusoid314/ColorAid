@@ -1,7 +1,8 @@
-body
+*,
+*::before,
+*::after
 {
-  margin-right: 1%;
-  margin-left: 1%;
+  box-sizing: border-box;
 }
 
 .highlight
@@ -37,6 +38,7 @@ body
   padding-bottom: 6px;
   padding-left: 6px;
   padding-right: 6px;
+
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
@@ -49,30 +51,29 @@ body
   padding-bottom: 6px;
   padding-left: 6px;
   padding-right: 6px;
-  border-style: solid;
-  border-width: 0px;
+
+  border: 0 solid;
   cursor: pointer;
 }
 
 #cameraView
 {
   display: block;
-  margin-top: 6px;
-  border-style: solid;
-  border-width: 0px;
-  background-color: white;
   width: 100%;
-  height: 100%;
-  
+  height: auto;
+
+  background-color: white;
+  border: 1px solid red;
 }
 
 #snapshotView
 {
   display: none;
-  margin-top: 6px;
-  border-style: solid;
-  border-width: 0px;
+  width: 100%;
+  height: auto;
+
   background-color: white;
+  border: 1px solid blue;
 }
 
 #matchView
@@ -82,16 +83,17 @@ body
   left: 0px;
   top: 0px;
   width: auto;
-  height: 20px;
-  border-style: solid;
-  border-width: 0px;
-  color: black;
-  background-color: white;
+  height: auto;
   font-size: 36px;
   text-align: center;
+  padding: 2px;
+
+  border: 2px outset gray;
+  color: black;
+  background-color: white;
 }
 
 #version
 {
-  margin-top: 30px;
+  margin-top: 10px;
 }

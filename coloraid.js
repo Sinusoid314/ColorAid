@@ -95,13 +95,10 @@ function snapshotBtn_OnClick(eventObj)
 function cameraView_OnClick(eventObj)
 //Capture snapshot from camera
 {
-  var aspectRatio = cameraView.videoWidth / cameraView.videoHeight;
-  var displayWidth = Math.round(snapshotView.height * aspectRatio);
-  var displayHeight = Math.round(snapshotView.height);
-  var displayX = Math.round((snapshotView.width - displayWidth) / 2);
-  var displayY = 0;
+  snapshotView.width = cameraView.videoWidth;
+  snapshotView.height = cameraView.videoHeight;
 
-  snapshotContext.drawImage(cameraView, displayX, displayY, displayWidth, displayHeight);
+  snapshotContext.drawImage(cameraView, 0, 0, cameraView.videoWidth, cameraView.videoHeight);
   snapshotBtn_OnClick();
 }
 
@@ -140,7 +137,7 @@ function snapshotView_OnClick(eventObj)
   }
 
   //Display the name of the matching color at the click-point
-  matchView.innerHTML = matchColorRef.name;
+  matchView.innerText = matchColorRef.name;
   matchView.style.left = eventObj.pageX;
   matchView.style.top = eventObj.pageY;
   matchView.style.display = "block";

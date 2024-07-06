@@ -1,3 +1,12 @@
+(July 5, 2024)
+[v1.1.8]
+	- Fixed bug with snapshot image not matching the size and aspect ratio of the camera image.
+
+(May 30, 2024)
+[v1.1.7]
+	- Fixed bug with color name text overflowing out of its container.
+	- Added a 3D border to the color name container.
+
 (May 3, 2022)
 [v1.1.6]
 	- Doubled the font size of the matching-color-name label.
