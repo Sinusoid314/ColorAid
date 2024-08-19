@@ -10,18 +10,24 @@
 
 <body>
 
-<div id="cameraText">Tap/click display to get a snapshot.</div>
-<div id="snapshotText">Tap/click display to get a color.</div>
+<div id="textContainer">
+  <div id="cameraText">Tap/click display to get a snapshot.</div>
+  <div id="snapshotText">Tap/click display to get a color.</div>
+</div>
 
-<div id="cameraBtn" class="highlight">Camera</div>
-<div id="snapshotBtn" class="unhighlight">Snapshot</div>
+<div id="btnContainer">
+  <div id="cameraBtn" class="highlight">Camera</div>
+  <div id="snapshotBtn" class="unhighlight">Snapshot</div>
+</div>
 
-<video id="cameraView" autoplay></video>
-<canvas id="snapshotView"></canvas>
+<div id="viewContainer">
+  <video id="cameraView" autoplay></video>
+  <canvas id="snapshotView"></canvas>
+</div>
 
 <div id="matchView"></div>
 
-<div id="version">Version 1.1.8</div>
+<div id="version">Version 1.1.9</div>
 
 </body>
 

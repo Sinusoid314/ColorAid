@@ -18,24 +18,25 @@ colorNames.forEach(name => colorRefs.push(new ColorRef(name[0], name[1])));
 //Define interface variables
 var cameraBtn = document.getElementById("cameraBtn");
 var snapshotBtn = document.getElementById("snapshotBtn");
+var viewContainer = document.getElementById("viewContainer");
 var cameraView = document.getElementById("cameraView");
 var snapshotView = document.getElementById("snapshotView");
 var snapshotContext = snapshotView.getContext("2d");
 var matchView = document.getElementById("matchView");
 var version = document.getElementById("version");
 
-//Make sure the snapshot canvas' actual size is the same as the camera view's CSS size
-snapshotView.width = cameraView.offsetWidth;
-snapshotView.height = cameraView.offsetHeight;
-
 initCamera();
 setEvents();
+
+// snapshotView.width = cameraView.videoWidth;
+// snapshotView.height = cameraView.videoHeight;
+
 
 function initCamera()
 {
   if('mediaDevices' in navigator)
   {
-    navigator.mediaDevices.getUserMedia({video: {facingMode: "environment"}})
+    navigator.mediaDevices.getUserMedia({video: {facingMode: "environment", width: {max: viewContainer.clientWidth}}})
     .then((mediaStream) =>
     {
       cameraView.srcObject = mediaStream;

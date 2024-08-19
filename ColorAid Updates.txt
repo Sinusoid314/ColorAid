@@ -1,3 +1,8 @@
+(July 19, 2024)
+[v1.1.9]
+	- Fixed bug with the camera view's CSS sizing causing faulty pixel matching.
+	- Modified UI color scheme and layout.
+
 (July 5, 2024)
 [v1.1.8]
 	- Fixed bug with snapshot image not matching the size and aspect ratio of the camera image.

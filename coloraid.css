@@ -3,6 +3,18 @@
 *::after
 {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body
+{
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  min-height: 100vh;
+
+  background-color: rgb(207, 213, 235);
 }
 
 .highlight
@@ -13,54 +25,67 @@
 
 .unhighlight
 {
-  background-color: lightgray;
+  background-color: gray;
   color: black;
+  text-shadow: 1px 1px darkgrey;
+}
+
+#textContainer
+{
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+
+  background-color: rgb(207, 213, 235);
 }
 
 #cameraText
 {
   display: block;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 #snapshotText
 {
   display: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
+}
+
+#btnContainer
+{
+  display: flex;
+  justify-content:center;
+  column-gap: 0.2em;
+
+  background-color: rgb(207, 213, 235);
 }
 
 #cameraBtn
 {
   display: inline-block;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding: 0.5em;
 
-  border-style: solid;
-  border-width: 0px;
   cursor: pointer;
 }
 
 #snapshotBtn
 {
   display: inline-block;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding: 0.5em;
 
-  border: 0 solid;
   cursor: pointer;
+}
+
+#viewContainer
+{
+  flex-grow: 1;
+  align-content: center; /*To center vertically */
+
+  background-color: white;
 }
 
 #cameraView
 {
   display: block;
-  width: 100%;
-  height: auto;
+  margin: auto; /* To center horizontally */
 
   background-color: white;
   border: 1px solid red;
@@ -69,8 +94,7 @@
 #snapshotView
 {
   display: none;
-  width: 100%;
-  height: auto;
+  margin: auto; /* To center horizontally */
 
   background-color: white;
   border: 1px solid blue;
@@ -95,5 +119,8 @@
 
 #version
 {
-  margin-top: 10px;
+  font-size: 0.8rem;
+
+  background-color: rgb(207, 213, 235);
+  border: 1px solid green;
 }
