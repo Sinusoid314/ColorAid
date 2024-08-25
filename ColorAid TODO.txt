@@ -1,3 +1,2 @@
-- Modify color sampling to include more than one pixel.
 - Modify color name display to stay within the bounds of the window frame.
 - 

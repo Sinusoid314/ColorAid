@@ -1,3 +1,7 @@
+(August 25, 2024)
+[v1.1.10]
+	- Modified color sampling to use the average color of an area of pixels.
+
 (July 19, 2024)
 [v1.1.9]
 	- Fixed bug with the camera view's CSS sizing causing faulty pixel matching.

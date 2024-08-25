@@ -1,21 +1,18 @@
-//Import the ColorJS library
 import Color from "https://colorjs.io/dist/color.js";
 import {colorNames} from "./colorNames.js";
 
-//Define the color references
+
 class ColorRef
 {
-  constructor(refName, displayName)
+  constructor(colorName, displayName)
   {
     this.name = displayName;
-    this.color = new Color(refName);
+    this.color = new Color(colorName);
   }
 }
 
+const sampleRadius = 6;
 var colorRefs = [];
-colorNames.forEach(name => colorRefs.push(new ColorRef(name[0], name[1])));
-
-//Define interface variables
 var cameraBtn = document.getElementById("cameraBtn");
 var snapshotBtn = document.getElementById("snapshotBtn");
 var viewContainer = document.getElementById("viewContainer");
@@ -25,11 +22,10 @@ var snapshotContext = snapshotView.getContext("2d");
 var matchView = document.getElementById("matchView");
 var version = document.getElementById("version");
 
+colorNames.forEach(name => colorRefs.push(new ColorRef(name[0], name[1])));
+
 initCamera();
 setEvents();
-
-// snapshotView.width = cameraView.videoWidth;
-// snapshotView.height = cameraView.videoHeight;
 
 
 function initCamera()
@@ -64,6 +60,50 @@ function setEvents()
   cameraView.addEventListener("tap", cameraView_OnClick);
   snapshotView.addEventListener("click", snapshotView_OnClick);
   snapshotView.addEventListener("tap", snapshotView_OnClick);
+}
+
+function getAverageColor(centerX, centerY, radius, context)
+//Calculate the average color of the given pixel area
+{
+  var red, green, blue, opacity;
+  var lSum = 0;
+  var aSum = 0;
+  var bSum = 0;
+  var lAverage, aAverage, bAverage;
+  var pixelCount = 0;
+  var left = centerX - radius;
+  var top = centerY - radius;
+  var sideLength = (radius * 2) + 1;
+  var rgbData = context.getImageData(left, top, sideLength, sideLength).data;
+  var pixelColor;
+
+  for(var pixelOffset = 0; pixelOffset < rgbData.length; pixelOffset += 4)
+  {
+    red = rgbData[pixelOffset + 0] / 255;
+    green = rgbData[pixelOffset + 1] / 255;
+    blue = rgbData[pixelOffset + 2] / 255;
+    opacity = rgbData[pixelOffset + 3];
+
+    if(opacity == 0)
+      continue;
+
+    pixelColor = new Color("srgb", [red, green, blue]);
+
+    lSum += pixelColor.lab.l;
+    aSum += pixelColor.lab.a;
+    bSum += pixelColor.lab.b;
+
+    pixelCount++;
+  }
+
+  lAverage = lSum / pixelCount;
+  aAverage = aSum / pixelCount;
+  bAverage = bSum / pixelCount;
+
+  return new Color("lab", [lAverage, aAverage, bAverage]);
+
+  // var rgbData = context.getImageData(centerX, centerY, 1, 1).data;
+  // return new Color("srgb", [(rgbData[0] / 255), (rgbData[1] / 255), (rgbData[2] / 255)]);
 }
 
 function cameraBtn_OnClick(eventObj)
@@ -109,7 +149,6 @@ function snapshotView_OnClick(eventObj)
   var snapshotViewRect;
   var sampleX;
   var sampleY;
-  var rgbData;
   var sampleColor;
   var matchColorRef;
   var leastDistance;
@@ -120,9 +159,8 @@ function snapshotView_OnClick(eventObj)
   sampleX = Math.round(eventObj.clientX - snapshotViewRect.left);
   sampleY = Math.round(eventObj.clientY - snapshotViewRect.top);
 
-  //Get the pixel color at sampleX/Y
-  rgbData = snapshotContext.getImageData(sampleX, sampleY, 1, 1).data;
-  sampleColor = new Color("srgb", [(rgbData[0] / 255), (rgbData[1] / 255), (rgbData[2] / 255)]);
+  //Get the sample color
+  sampleColor = getAverageColor(sampleX, sampleY, sampleRadius, snapshotContext);
 
   //Find the color reference that sampleColor is nearest to
   leastDistance = sampleColor.distance(colorRefs[0].color, "lab");
