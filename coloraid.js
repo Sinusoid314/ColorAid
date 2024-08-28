@@ -11,7 +11,7 @@ class ColorRef
   }
 }
 
-const sampleRadius = 6;
+const sampleRadius = 10;
 var colorRefs = [];
 var cameraBtn = document.getElementById("cameraBtn");
 var snapshotBtn = document.getElementById("snapshotBtn");
@@ -65,29 +65,30 @@ function setEvents()
 function getAverageColor(centerX, centerY, radius, context)
 //Calculate the average color of the given pixel area
 {
-  var red, green, blue, opacity;
-  var lSum = 0;
-  var aSum = 0;
-  var bSum = 0;
-  var lAverage, aAverage, bAverage;
-  var pixelCount = 0;
-  var left = centerX - radius;
-  var top = centerY - radius;
-  var sideLength = (radius * 2) + 1;
-  var rgbData = context.getImageData(left, top, sideLength, sideLength).data;
-  var pixelColor;
+  var left, top, sideLength;
+  var rgbData, pixelOpacity, pixelColor, averageColor;
+  var lSum, aSum, bSum, pixelCount;
+
+  left = centerX - radius;
+  top = centerY - radius;
+  sideLength = (radius * 2) + 1;
+  rgbData = context.getImageData(left, top, sideLength, sideLength).data;
+  pixelColor = new Color("srgb", [0, 0, 0]);
+  averageColor = new Color("lab", [0, 0, 0]);
+  lSum = 0;
+  aSum = 0;
+  bSum = 0;
+  pixelCount = 0;
 
   for(var pixelOffset = 0; pixelOffset < rgbData.length; pixelOffset += 4)
   {
-    red = rgbData[pixelOffset + 0] / 255;
-    green = rgbData[pixelOffset + 1] / 255;
-    blue = rgbData[pixelOffset + 2] / 255;
-    opacity = rgbData[pixelOffset + 3];
-
-    if(opacity == 0)
+    pixelOpacity = rgbData[pixelOffset + 3];
+    if(pixelOpacity == 0)
       continue;
-
-    pixelColor = new Color("srgb", [red, green, blue]);
+  
+    pixelColor.srgb.r = rgbData[pixelOffset + 0] / 255;
+    pixelColor.srgb.g = rgbData[pixelOffset + 1] / 255;
+    pixelColor.srgb.b = rgbData[pixelOffset + 2] / 255;
 
     lSum += pixelColor.lab.l;
     aSum += pixelColor.lab.a;
@@ -96,11 +97,11 @@ function getAverageColor(centerX, centerY, radius, context)
     pixelCount++;
   }
 
-  lAverage = lSum / pixelCount;
-  aAverage = aSum / pixelCount;
-  bAverage = bSum / pixelCount;
+  averageColor.lab.l = lSum / pixelCount;
+  averageColor.lab.a = aSum / pixelCount;
+  averageColor.lab.b = bSum / pixelCount;
 
-  return new Color("lab", [lAverage, aAverage, bAverage]);
+  return averageColor;
 
   // var rgbData = context.getImageData(centerX, centerY, 1, 1).data;
   // return new Color("srgb", [(rgbData[0] / 255), (rgbData[1] / 255), (rgbData[2] / 255)]);

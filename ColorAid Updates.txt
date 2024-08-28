@@ -1,3 +1,9 @@
+(August 27, 2024)
+[v1.1.11]
+	- Refactored getAverageColor() function.
+	- Decreased font size of match view.
+	- Increased default sample radius to 10.
+
 (August 25, 2024)
 [v1.1.10]
 	- Modified color sampling to use the average color of an area of pixels.

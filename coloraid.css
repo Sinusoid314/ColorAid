@@ -102,13 +102,13 @@ body
 
 #matchView
 {
+  font-size: 1.8rem;
   position: absolute;
   display: none;
   left: 0px;
   top: 0px;
   width: auto;
   height: auto;
-  font-size: 36px;
   text-align: center;
   padding: 2px;
 
