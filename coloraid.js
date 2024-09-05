@@ -13,6 +13,8 @@ class ColorRef
 
 const sampleRadius = 10;
 var colorRefs = [];
+var cameraText = document.getElementById("cameraText");
+var snapshotText = document.getElementById("snapshotText");
 var cameraBtn = document.getElementById("cameraBtn");
 var snapshotBtn = document.getElementById("snapshotBtn");
 var viewContainer = document.getElementById("viewContainer");
@@ -90,6 +92,9 @@ function getAverageColor(centerX, centerY, radius, context)
     pixelColor.srgb.g = rgbData[pixelOffset + 1] / 255;
     pixelColor.srgb.b = rgbData[pixelOffset + 2] / 255;
 
+    // if(pixelColor.lab.l < 20)
+    //   pixelColor.lab.l = 20;
+
     lSum += pixelColor.lab.l;
     aSum += pixelColor.lab.a;
     bSum += pixelColor.lab.b;
@@ -164,11 +169,11 @@ function snapshotView_OnClick(eventObj)
   sampleColor = getAverageColor(sampleX, sampleY, sampleRadius, snapshotContext);
 
   //Find the color reference that sampleColor is nearest to
-  leastDistance = sampleColor.distance(colorRefs[0].color, "lab");
+  leastDistance = sampleColor.deltaE(colorRefs[0].color, "2000");
   matchColorRef = colorRefs[0];
   for(var refIndex = 1; refIndex < colorRefs.length; refIndex++)
   {
-    refDistance = sampleColor.distance(colorRefs[refIndex].color, "lab");
+    refDistance = sampleColor.deltaE(colorRefs[refIndex].color, "2000");
     if(refDistance < leastDistance)
     {
       leastDistance = refDistance;

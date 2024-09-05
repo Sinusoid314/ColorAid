@@ -1,2 +1,2 @@
 - Modify color name display to stay within the bounds of the window frame.
-- 
+- Add a lightness-value range clamp to the getgetAverageColor() function.

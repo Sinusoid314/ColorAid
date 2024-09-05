@@ -1,3 +1,8 @@
+(September 4, 2024)
+[v1.1.12]
+	- Modified color matching code to use deltaE-2000 color distance.
+	- Added missing references to cameraText and snapshotText.
+
 (August 27, 2024)
 [v1.1.11]
 	- Refactored getAverageColor() function.
