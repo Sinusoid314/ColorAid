@@ -11,7 +11,22 @@ class ColorRef
   }
 }
 
-const sampleRadius = 10;
+class ValueRange
+{
+  constructor(min, max)
+  {
+    this.min = Math.min(min, max);
+    this.max = Math.max(min, max);
+  }
+
+  clamp(value)
+  {
+    return Math.max(this.min, Math.min(value, this.max));
+  }
+}
+
+var sampleRadius = 10;
+var lightnessRange = new ValueRange(20, 80);
 var colorRefs = [];
 var cameraText = document.getElementById("cameraText");
 var snapshotText = document.getElementById("snapshotText");
@@ -92,8 +107,7 @@ function getAverageColor(centerX, centerY, radius, context)
     pixelColor.srgb.g = rgbData[pixelOffset + 1] / 255;
     pixelColor.srgb.b = rgbData[pixelOffset + 2] / 255;
 
-    // if(pixelColor.lab.l < 20)
-    //   pixelColor.lab.l = 20;
+    pixelColor.lab.l = lightnessRange.clamp(pixelColor.lab.l);
 
     lSum += pixelColor.lab.l;
     aSum += pixelColor.lab.a;
