@@ -25,19 +25,29 @@ class ValueRange
   }
 }
 
+var lightnessRange = new ValueRange(0, 100);
+var sampleLightnessRange = new ValueRange(20, 80);
 var sampleRadius = 10;
-var lightnessRange = new ValueRange(20, 80);
 var colorRefs = [];
+
 var cameraText = document.getElementById("cameraText");
 var snapshotText = document.getElementById("snapshotText");
 var cameraBtn = document.getElementById("cameraBtn");
 var snapshotBtn = document.getElementById("snapshotBtn");
+var settingsOpenBtn = document.getElementById("settingsOpenBtn");
 var viewContainer = document.getElementById("viewContainer");
 var cameraView = document.getElementById("cameraView");
 var snapshotView = document.getElementById("snapshotView");
 var snapshotContext = snapshotView.getContext("2d");
 var matchView = document.getElementById("matchView");
-var version = document.getElementById("version");
+// var version = document.getElementById("version");
+
+var settingsDialog = document.getElementById("settingsDialog");
+// var settingsCloseBtn = document.getElementById("settingsCloseBtn");
+var lightnessMinInput = document.getElementById("lightnessMinInput");
+var lightnessMaxInput = document.getElementById("lightnessMinInput");
+var sampleRadiusInput = document.getElementById("sampleRadiusInput");
+
 
 colorNames.forEach(name => colorRefs.push(new ColorRef(name[0], name[1])));
 
@@ -73,10 +83,16 @@ function setEvents()
   cameraBtn.addEventListener("tap", cameraBtn_OnClick);
   snapshotBtn.addEventListener("click", snapshotBtn_OnClick);
   snapshotBtn.addEventListener("tap", snapshotBtn_OnClick);
+  settingsOpenBtn.addEventListener("click", settingsOpenBtn_OnClick);
+  settingsOpenBtn.addEventListener("tap", settingsOpenBtn_OnClick);
   cameraView.addEventListener("click", cameraView_OnClick);
   cameraView.addEventListener("tap", cameraView_OnClick);
   snapshotView.addEventListener("click", snapshotView_OnClick);
   snapshotView.addEventListener("tap", snapshotView_OnClick);
+
+  lightnessMinInput.addEventListener("input", lightnessMinInput_OnInput);
+  lightnessMaxInput.addEventListener("input", lightnessMaxInput_OnInput);
+  sampleRadiusInput.addEventListener("input", sampleRadiusInput_OnInput);
 }
 
 function getAverageColor(centerX, centerY, radius, context)
@@ -107,7 +123,7 @@ function getAverageColor(centerX, centerY, radius, context)
     pixelColor.srgb.g = rgbData[pixelOffset + 1] / 255;
     pixelColor.srgb.b = rgbData[pixelOffset + 2] / 255;
 
-    pixelColor.lab.l = lightnessRange.clamp(pixelColor.lab.l);
+    pixelColor.lab.l = sampleLightnessRange.clamp(pixelColor.lab.l);
 
     lSum += pixelColor.lab.l;
     aSum += pixelColor.lab.a;
@@ -151,6 +167,12 @@ function snapshotBtn_OnClick(eventObj)
 
   snapshotText.style.display = "block";
   cameraText.style.display = "none";
+}
+
+function settingsOpenBtn_OnClick(eventObj)
+//
+{
+  settingsDialog.showModal();
 }
 
 function cameraView_OnClick(eventObj)
@@ -202,3 +224,20 @@ function snapshotView_OnClick(eventObj)
   matchView.style.display = "block";
 }
 
+function lightnessMinInput_OnInput(eventObj)
+//
+{
+
+}
+
+function lightnessMaxInput_OnInput(eventObj)
+//
+{
+
+}
+
+function sampleRadiusInput_OnInput(eventObj)
+//
+{
+
+}

@@ -74,6 +74,15 @@ body
   cursor: pointer;
 }
 
+#settingsOpenBtn
+{
+  display: inline-block;
+  padding: 0.5em;
+  margin-left: 1em;
+
+  cursor: pointer;
+}
+
 #viewContainer
 {
   flex-grow: 1;
@@ -124,3 +133,38 @@ body
   background-color: rgb(207, 213, 235);
   border: 1px solid green;
 }
+
+#settingsDialog
+{
+  margin: auto;
+  width: 25em;
+  height: 15em;
+}
+
+#settingsForm
+{
+  display: flex;
+  flex-direction: column;
+}
+
+#settingsHeader
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.3em;
+}
+
+#settingsTitle
+{
+  margin-left: 35%;
+}
+
+#settingsCloseBtn
+{
+  border: none;
+  background: none;
+  outline-color: lightgray;
+  cursor: pointer;
+}
+

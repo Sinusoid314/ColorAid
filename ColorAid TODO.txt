@@ -1,2 +1,2 @@
 - Modify color name display to stay within the bounds of the window frame.
-- Add a Settings screen to allow uswer control of sample radius and lightness-value range.
+- Finish the Settings dialog.

@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="coloraid.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script defer="defer" type="module" src="coloraid.js"></script>
 </head>
 
@@ -18,6 +19,7 @@
 <div id="btnContainer">
   <div id="cameraBtn" class="highlight">Camera</div>
   <div id="snapshotBtn" class="unhighlight">Snapshot</div>
+  <div id="settingsOpenBtn"><span class="fa-solid fa-gear"></span></div>
 </div>
 
 <div id="viewContainer">
@@ -27,7 +29,26 @@
 
 <div id="matchView"></div>
 
-<div id="version">Version 1.1.13</div>
+<div id="version">Version 1.1.14</div>
+
+<dialog id="settingsDialog">
+  <form id="settingsForm" method="dialog">
+    <div id="settingsHeader">
+      <span id="settingsTitle">Settings</span>
+      <button id="settingsCloseBtn" type="submit"><span class="fa-solid fa-x"></span></button>
+    </div>
+    <div id="lightnessContainer">
+      <label for="lightnessMinInput">Minimum:</label>
+      <input id="lightnessMinInput" type="number" min="0" max="100" value="20" />
+      <label for="lightnessMaxInput">Maximum:</label>
+      <input id="lightnessMaxInput" type="number" min="0" max="100" value="80" />
+    </div>
+    <div id="sampleRadiusContainer">
+      <label for="sampleRadiusInput">Sample Radius:</label>
+      <input id="sampleRadiusInput" type="number" min="0" max="100" value="10" />
+    </div>
+  </form>
+</dialog>
 
 </body>
 
