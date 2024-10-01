@@ -44,14 +44,15 @@ var matchView = document.getElementById("matchView");
 
 var settingsDialog = document.getElementById("settingsDialog");
 // var settingsCloseBtn = document.getElementById("settingsCloseBtn");
-var lightnessMinInput = document.getElementById("lightnessMinInput");
-var lightnessMaxInput = document.getElementById("lightnessMinInput");
+var sampleLightnessMinInput = document.getElementById("sampleLightnessMinInput");
+var sampleLightnessMaxInput = document.getElementById("sampleLightnessMaxInput");
 var sampleRadiusInput = document.getElementById("sampleRadiusInput");
 
 
 colorNames.forEach(name => colorRefs.push(new ColorRef(name[0], name[1])));
 
 initCamera();
+initSettingsUI();
 setEvents();
 
 
@@ -77,6 +78,14 @@ function initCamera()
   }
 }
 
+function initSettingsUI()
+//
+{
+  sampleLightnessMinInput.value = sampleLightnessRange.min;
+  sampleLightnessMaxInput.value = sampleLightnessRange.max;
+  sampleRadiusInput.value = sampleRadius;
+}
+
 function setEvents()
 {
   cameraBtn.addEventListener("click", cameraBtn_OnClick);
@@ -90,8 +99,8 @@ function setEvents()
   snapshotView.addEventListener("click", snapshotView_OnClick);
   snapshotView.addEventListener("tap", snapshotView_OnClick);
 
-  lightnessMinInput.addEventListener("input", lightnessMinInput_OnInput);
-  lightnessMaxInput.addEventListener("input", lightnessMaxInput_OnInput);
+  sampleLightnessMinInput.addEventListener("input", sampleLightnessMinInput_OnInput);
+  sampleLightnessMaxInput.addEventListener("input", sampleLightnessMaxInput_OnInput);
   sampleRadiusInput.addEventListener("input", sampleRadiusInput_OnInput);
 }
 
@@ -224,20 +233,20 @@ function snapshotView_OnClick(eventObj)
   matchView.style.display = "block";
 }
 
-function lightnessMinInput_OnInput(eventObj)
+function sampleLightnessMinInput_OnInput(eventObj)
 //
 {
-
+  sampleLightnessRange.min = sampleLightnessMinInput.value;
 }
 
-function lightnessMaxInput_OnInput(eventObj)
+function sampleLightnessMaxInput_OnInput(eventObj)
 //
 {
-
+  sampleLightnessRange.max = sampleLightnessMaxInput.value;
 }
 
 function sampleRadiusInput_OnInput(eventObj)
 //
 {
-
+  sampleRadius = sampleRadiusInput.value;
 }

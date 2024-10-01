@@ -29,7 +29,7 @@
 
 <div id="matchView"></div>
 
-<div id="version">Version 1.1.14</div>
+<div id="version">Version 1.1.15</div>
 
 <dialog id="settingsDialog">
   <form id="settingsForm" method="dialog">
@@ -37,12 +37,13 @@
       <span id="settingsTitle">Settings</span>
       <button id="settingsCloseBtn" type="submit"><span class="fa-solid fa-x"></span></button>
     </div>
-    <div id="lightnessContainer">
-      <label for="lightnessMinInput">Minimum:</label>
-      <input id="lightnessMinInput" type="number" min="0" max="100" value="20" />
-      <label for="lightnessMaxInput">Maximum:</label>
-      <input id="lightnessMaxInput" type="number" min="0" max="100" value="80" />
-    </div>
+    <fieldset id="sampleLightnessContainer">
+      <legend>Sample Lightness</legend>
+      <label for="sampleLightnessMinInput">Min:</label>
+      <input id="sampleLightnessMinInput" type="number" min="0" max="100" value="20" />
+      <label for="sampleLightnessMaxInput">Max:</label>
+      <input id="sampleLightnessMaxInput" type="number" min="0" max="100" value="80" />
+    </fieldset>
     <div id="sampleRadiusContainer">
       <label for="sampleRadiusInput">Sample Radius:</label>
       <input id="sampleRadiusInput" type="number" min="0" max="100" value="10" />

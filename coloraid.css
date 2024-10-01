@@ -137,8 +137,8 @@ body
 #settingsDialog
 {
   margin: auto;
-  width: 25em;
-  height: 15em;
+  min-width: 21em;
+  min-height: 12em;
 }
 
 #settingsForm
@@ -152,19 +152,46 @@ body
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0.3em;
+  margin: 0.4em;
+  padding: 0.2em;
+
+  background-color: rgb(207, 213, 235);
 }
 
 #settingsTitle
 {
-  margin-left: 35%;
+  margin: auto;
+
+  cursor:default;
 }
 
 #settingsCloseBtn
 {
+  margin-right: 0.7em;
   border: none;
   background: none;
   outline-color: lightgray;
   cursor: pointer;
 }
 
+#sampleLightnessContainer
+{
+  margin-block: 0.6em;
+  margin-inline: 1em;
+  padding-block: 1em;
+  padding-inline: 0.5em;
+
+  cursor:default;
+}
+
+#sampleLightnessContainer label
+{
+  margin-left: 0.9em;
+}
+
+#sampleRadiusContainer
+{
+  margin-block: 0.5em;
+  margin-inline: 1em;
+  padding: 5px;
+}

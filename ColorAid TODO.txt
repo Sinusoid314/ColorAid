@@ -1,2 +1,1 @@
 - Modify color name display to stay within the bounds of the window frame.
-- Finish the Settings dialog.
