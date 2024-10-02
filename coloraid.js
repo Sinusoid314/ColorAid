@@ -151,7 +151,7 @@ function getAverageColor(centerX, centerY, radius, context)
   // return new Color("srgb", [(rgbData[0] / 255), (rgbData[1] / 255), (rgbData[2] / 255)]);
 }
 
-function cameraBtn_OnClick(eventObj)
+function cameraBtn_OnClick(event)
 //Switch to camera view
 {
   cameraView.style.display = "block";
@@ -165,7 +165,7 @@ function cameraBtn_OnClick(eventObj)
   snapshotText.style.display = "none";
 }
 
-function snapshotBtn_OnClick(eventObj)
+function snapshotBtn_OnClick(event)
 //Switch to snapshot view
 {
   snapshotView.style.display = "block";
@@ -178,13 +178,13 @@ function snapshotBtn_OnClick(eventObj)
   cameraText.style.display = "none";
 }
 
-function settingsOpenBtn_OnClick(eventObj)
+function settingsOpenBtn_OnClick(event)
 //
 {
   settingsDialog.showModal();
 }
 
-function cameraView_OnClick(eventObj)
+function cameraView_OnClick(event)
 //Capture snapshot from camera
 {
   snapshotView.width = cameraView.videoWidth;
@@ -194,7 +194,7 @@ function cameraView_OnClick(eventObj)
   snapshotBtn_OnClick();
 }
 
-function snapshotView_OnClick(eventObj)
+function snapshotView_OnClick(event)
 //Find the closest matching color to the selected snapshot pixel
 {
   var snapshotViewRect;
@@ -207,8 +207,8 @@ function snapshotView_OnClick(eventObj)
 
   //Set sampleX/Y to the event click-point, relative to snapshotView
   snapshotViewRect = snapshotView.getBoundingClientRect();
-  sampleX = Math.round(eventObj.clientX - snapshotViewRect.left);
-  sampleY = Math.round(eventObj.clientY - snapshotViewRect.top);
+  sampleX = Math.round(event.clientX - snapshotViewRect.left);
+  sampleY = Math.round(event.clientY - snapshotViewRect.top);
 
   //Get the sample color
   sampleColor = getAverageColor(sampleX, sampleY, sampleRadius, snapshotContext);
@@ -228,24 +228,30 @@ function snapshotView_OnClick(eventObj)
 
   //Display the name of the matching color at the click-point
   matchView.innerText = matchColorRef.name;
-  matchView.style.left = eventObj.pageX;
-  matchView.style.top = eventObj.pageY;
+  matchView.style.left = event.pageX;
+  matchView.style.top = event.pageY;
   matchView.style.display = "block";
 }
 
-function sampleLightnessMinInput_OnInput(eventObj)
+function sampleLightnessMinInput_OnInput(event)
 //
 {
-  sampleLightnessRange.min = sampleLightnessMinInput.value;
+  if(event.target.value > sampleLightnessRange.max)
+    event.target.value = sampleLightnessRange.max;
+
+  sampleLightnessRange.min = event.target.value;
 }
 
-function sampleLightnessMaxInput_OnInput(eventObj)
+function sampleLightnessMaxInput_OnInput(event)
 //
 {
-  sampleLightnessRange.max = sampleLightnessMaxInput.value;
+  if(event.target.value < sampleLightnessRange.min)
+    event.target.value = sampleLightnessRange.min;
+
+  sampleLightnessRange.max = event.target.value;
 }
 
-function sampleRadiusInput_OnInput(eventObj)
+function sampleRadiusInput_OnInput(event)
 //
 {
   sampleRadius = sampleRadiusInput.value;
