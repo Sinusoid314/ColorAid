@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <title>ColorAid</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="coloraid.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer="defer" type="module" src="coloraid.js"></script>
+</head>
+
+<body>
+
+<div id="textContainer">
+  <div id="cameraText">Tap/click display to get a snapshot.</div>
+  <div id="snapshotText">Tap/click display to get a color.</div>
+</div>
+
+<div id="btnContainer">
+  <div id="cameraBtn" class="highlight">Camera</div>
+  <div id="snapshotBtn" class="unhighlight">Snapshot</div>
+  <div id="settingsOpenBtn"><span class="fa-solid fa-gear"></span></div>
+</div>
+
+<div id="viewContainer">
+  <video id="cameraView" autoplay></video>
+  <canvas id="snapshotView"></canvas>
+</div>
+
+<div id="matchView"></div>
+
+<div id="version">Version 1.1.16</div>
+
+<dialog id="settingsDialog">
+  <form id="settingsForm" method="dialog">
+    <div id="settingsHeader">
+      <span id="settingsTitle">Settings</span>
+      <button id="settingsCloseBtn" type="submit"><span class="fa-solid fa-x"></span></button>
+    </div>
+    <fieldset id="sampleLightnessContainer">
+      <legend>Sample Lightness</legend>
+      <label for="sampleLightnessMinInput">Min:</label>
+      <input id="sampleLightnessMinInput" type="number" min="0" max="100" value="20" />
+      <label for="sampleLightnessMaxInput">Max:</label>
+      <input id="sampleLightnessMaxInput" type="number" min="0" max="100" value="80" />
+    </fieldset>
+    <div id="sampleRadiusContainer">
+      <label for="sampleRadiusInput">Sample Radius:</label>
+      <input id="sampleRadiusInput" type="number" min="0" max="100" value="10" />
+    </div>
+  </form>
+</dialog>
+
+</body>
+
+</html>

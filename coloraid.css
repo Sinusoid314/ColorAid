@@ -1,0 +1,197 @@
+*,
+*::before,
+*::after
+{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body
+{
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  min-height: 100vh;
+
+  background-color: rgb(207, 213, 235);
+}
+
+.highlight
+{
+  background-color: blue;
+  color: white;
+}
+
+.unhighlight
+{
+  background-color: gray;
+  color: black;
+  text-shadow: 1px 1px darkgrey;
+}
+
+#textContainer
+{
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+
+  background-color: rgb(207, 213, 235);
+}
+
+#cameraText
+{
+  display: block;
+}
+
+#snapshotText
+{
+  display: none;
+}
+
+#btnContainer
+{
+  display: flex;
+  justify-content:center;
+  column-gap: 0.2em;
+
+  background-color: rgb(207, 213, 235);
+}
+
+#cameraBtn
+{
+  display: inline-block;
+  padding: 0.5em;
+
+  cursor: pointer;
+}
+
+#snapshotBtn
+{
+  display: inline-block;
+  padding: 0.5em;
+
+  cursor: pointer;
+}
+
+#settingsOpenBtn
+{
+  display: inline-block;
+  padding: 0.5em;
+  margin-left: 1em;
+
+  cursor: pointer;
+}
+
+#viewContainer
+{
+  flex-grow: 1;
+  align-content: center; /*To center vertically */
+
+  background-color: white;
+}
+
+#cameraView
+{
+  display: block;
+  margin: auto; /* To center horizontally */
+
+  background-color: white;
+  border: 1px solid red;
+}
+
+#snapshotView
+{
+  display: none;
+  margin: auto; /* To center horizontally */
+
+  background-color: white;
+  border: 1px solid blue;
+}
+
+#matchView
+{
+  font-size: 1.8rem;
+  position: absolute;
+  display: none;
+  left: 0px;
+  top: 0px;
+  width: auto;
+  height: auto;
+  text-align: center;
+  padding: 2px;
+
+  border: 2px outset gray;
+  color: black;
+  background-color: white;
+}
+
+#version
+{
+  font-size: 0.8rem;
+
+  background-color: rgb(207, 213, 235);
+  border: 1px solid green;
+}
+
+#settingsDialog
+{
+  margin: auto;
+  min-width: 21em;
+  min-height: 12em;
+}
+
+#settingsForm
+{
+  display: flex;
+  flex-direction: column;
+}
+
+#settingsHeader
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.4em;
+  padding: 0.2em;
+
+  background-color: rgb(207, 213, 235);
+}
+
+#settingsTitle
+{
+  margin: auto;
+
+  cursor:default;
+}
+
+#settingsCloseBtn
+{
+  margin-right: 0.7em;
+  border: none;
+  background: none;
+  outline-color: lightgray;
+  cursor: pointer;
+}
+
+#sampleLightnessContainer
+{
+  margin-block: 0.6em;
+  margin-inline: 1em;
+  padding-block: 1em;
+  padding-inline: 0.5em;
+
+  cursor:default;
+}
+
+#sampleLightnessContainer label
+{
+  margin-left: 0.9em;
+}
+
+#sampleRadiusContainer
+{
+  margin-block: 0.5em;
+  margin-inline: 1em;
+  padding: 5px;
+}

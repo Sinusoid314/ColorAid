@@ -1,0 +1,101 @@
+(October 2, 2024)
+[v1.1.16]
+	- Modified the sample-lightness input events in Settings to clamp the value of each input to the other.
+
+(October 1, 2024)
+[v1.1.15]
+	- Finished the Settings dialog.
+
+(September 29, 2024)
+[v1.1.14]
+	- Added a skeleton Settings dialog UI.
+
+(September 13, 2024)
+[v1.1.13]
+	- Added a lightness-value range to clamp the lightness component of the sample pixel colors.
+
+(September 4, 2024)
+[v1.1.12]
+	- Modified color matching code to use deltaE-2000 color distance.
+	- Added missing references to cameraText and snapshotText.
+
+(August 27, 2024)
+[v1.1.11]
+	- Refactored getAverageColor() function.
+	- Decreased font size of match view.
+	- Increased default sample radius to 10.
+
+(August 25, 2024)
+[v1.1.10]
+	- Modified color sampling to use the average color of an area of pixels.
+
+(July 19, 2024)
+[v1.1.9]
+	- Fixed bug with the camera view's CSS sizing causing faulty pixel matching.
+	- Modified UI color scheme and layout.
+
+(July 5, 2024)
+[v1.1.8]
+	- Fixed bug with snapshot image not matching the size and aspect ratio of the camera image.
+
+(May 30, 2024)
+[v1.1.7]
+	- Fixed bug with color name text overflowing out of its container.
+	- Added a 3D border to the color name container.
+
+(May 3, 2022)
+[v1.1.6]
+	- Doubled the font size of the matching-color-name label.
+
+(April 28, 2022)
+[v1.1.5]
+	- Fixed bug with matching sRGB's 0-1 range with regular RGB's 0-255 range.
+	- Modified color name display to auto resize to fit its text.
+	- Added human-readable color names.
+
+(April 27, 2022)
+[v1.1.4]
+	- Refactored project to use the ColorJS library for color representation and matching.
+	- Made the color name display larger.
+
+(April 26, 2022)
+[v1.1.3]
+	- Fixed the snapshot image so it is the same size as camera view.
+	- Fixed a bug with the color data not matching the click/tap position.
+
+(April 25, 2022)
+[v1.1.2]
+	- Modified the page layout to center and stretch the views.
+[v1.1.1]
+	- Fixed version div position.
+[v1.1.0]
+	- Added index.html that redirects to coloraid.html.
+	- Modified initCamera() in coloraid.js to request the rear-facing camera.
+	- Reformatted source files.
+	- Modified colorDef.js to use the 'class' syntax for Color and ColorRegion classes.
+	- Added a version div to coloraid.html.
+
+(March 30, 2021)
+	- Fixed bug with displaying color name.
+
+(March 29, 2021)
+	- Updated snapshotView_OnClick() to utilize the HSL-region scheme.
+	- Implemented the setFromRGB() method of Color.
+
+(March 25, 2021)
+	- Updated color scheme to use HSL-space and color regions for matching.
+
+(March 20, 2021)
+	- Moved color list into its own module.
+	- Added more colors to the color list.
+	- Added instruction text.
+
+(March 18, 2021)
+	- Added CSS classes for highlighting/un-highlighting the toggle buttons.
+
+(March 17, 2021)
+	- Moved event-setter code into setEvents().
+	- Gave buttons proper text and cursor display.
+
+(March 12, 2021)
+	- Added initCamera() to setup camera support.
